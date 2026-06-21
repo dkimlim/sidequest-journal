@@ -5,6 +5,7 @@ import FormattedDate from '../../components/FormattedDate.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+import { withBase } from '../../lib/url';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -26,7 +27,7 @@ const posts = (await getCollection('blog')).sort(
 							<span class="archive-date">
 								<FormattedDate date={post.data.pubDate} />
 							</span>
-							<a class="archive-title" href={`/blog/${post.id}/`}>
+							<a class="archive-title" href={withBase(`/blog/${post.id}/`)}>
 								{post.data.title ?? post.data.description}
 							</a>
 							<span class="post-type-badge archive-type">{post.data.postType}</span>

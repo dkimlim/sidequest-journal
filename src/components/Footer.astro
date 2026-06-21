@@ -1,7 +1,8 @@
 ---
 import { SITE_TITLE } from '../consts';
+import { withBase } from '../lib/url';
 ---
 
 <footer class="site-footer">
-	{SITE_TITLE} &nbsp;&middot;&nbsp; <a href="/rss.xml">RSS</a>
+	{SITE_TITLE} &nbsp;&middot;&nbsp; <a href={withBase('/rss.xml')}>RSS</a>
 </footer>

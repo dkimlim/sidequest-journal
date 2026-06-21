@@ -1,14 +1,15 @@
 ---
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { withBase } from '../lib/url';
 import HeaderLink from './HeaderLink.astro';
 ---
 
 <header class="site-header">
-	<h1 class="site-title"><a href="/">{SITE_TITLE}</a></h1>
+	<h1 class="site-title"><a href={withBase('/')}>{SITE_TITLE}</a></h1>
 	<p class="site-subtitle">{SITE_DESCRIPTION}</p>
 	<nav class="site-nav">
-		<HeaderLink href="/">Home</HeaderLink>
-		<HeaderLink href="/blog">Archive</HeaderLink>
-		<HeaderLink href="/about">About</HeaderLink>
+		<HeaderLink href={withBase('/')}>Home</HeaderLink>
+		<HeaderLink href={withBase('/blog')}>Archive</HeaderLink>
+		<HeaderLink href={withBase('/about')}>About</HeaderLink>
 	</nav>
 </header>

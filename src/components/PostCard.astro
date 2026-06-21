@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
+import { withBase } from '../lib/url';
 import FormattedDate from './FormattedDate.astro';
 
 interface Props {
@@ -10,7 +11,7 @@ interface Props {
 const { post } = Astro.props;
 const { title, pubDate, postType, tags, heroImage, caption } = post.data;
 const hasImage = Boolean(heroImage);
-const permalink = `/blog/${post.id}/`;
+const permalink = withBase(`/blog/${post.id}/`);
 ---
 
 <article class={`post ${hasImage ? 'type-image' : 'type-text'}`}>
