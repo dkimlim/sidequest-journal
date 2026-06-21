@@ -1,11 +1,14 @@
 # Decap CMS config for Sidequest Journal.
 #
-# Manual setup still needed before this works (see chat summary for the full
-# walkthrough):
-#   1. Create the GitHub repo and push this project to it.
-#   2. Create a GitHub OAuth App and a free Netlify site to proxy the OAuth
-#      handshake (Decap CMS's documented path for non-Netlify hosting).
-#   3. Replace base_url below with that Netlify site's URL.
+# This site is on GitHub Pages, which is static-only, so the GitHub OAuth
+# handshake is proxied through Netlify Functions in netlify/functions/
+# (auth.js + callback.js), deployed via the sidequest-journal Netlify site.
+#
+# One-time setup on Netlify's side:
+#   1. Create a GitHub OAuth App with callback URL
+#      https://sidequest-journal.netlify.app/callback
+#   2. Set OAUTH_CLIENT_ID / OAUTH_CLIENT_SECRET env vars on the Netlify site
+#      to that OAuth App's credentials.
 
 backend:
   name: github
