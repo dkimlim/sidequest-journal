@@ -1,9 +1,12 @@
 ---
-title: 'On the value of going slightly off-route'
-description: 'A short essay on sidequests, detours, and what they reveal.'
-pubDate: 'Jun 19 2026'
-postType: 'essay'
-tags: ['process', 'creativity', 'reflection']
+title: On the value of going slightly off-route test 1
+description: A short essay on sidequests, detours, and what they reveal.
+pubDate: Jun 19 2026
+postType: essay
+tags:
+  - process
+  - creativity
+  - reflection
 ---
 
 There's something about deviating from the plan — just slightly — that opens up a texture the direct path doesn't have. You notice the odd shop. You end up in a conversation you weren't expecting. The neighborhood reveals itself at a different angle.
