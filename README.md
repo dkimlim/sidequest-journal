@@ -1,63 +1,30 @@
-# Astro Starter Kit: Blog
+# Sidequest Journal
 
-```sh
-npm create astro@latest -- --template blog
-```
+A personal journal/blog built with [Astro](https://astro.build).
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Commands
 
-Features:
+| Command           | Action                                       |
+| :----------------- | :-------------------------------------------- |
+| `npm install`       | Install dependencies                          |
+| `npm run dev`       | Start local dev server at `localhost:4321`    |
+| `npm run build`     | Build the production site to `./dist/`        |
+| `npm run preview`   | Preview the build locally before deploying    |
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and Open Graph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
+## Project structure
 
-## 🚀 Project Structure
+- `src/content/blog/` — journal entries (Markdown/MDX), validated against the schema in `src/content.config.ts`
+- `src/components/PostCard.astro` — renders a single feed entry
+- `src/pages/index.astro` — the home feed (full posts)
+- `src/pages/blog/index.astro` — the compact archive list
+- `src/layouts/BlogPost.astro` — single-post page layout
 
-Inside of your Astro project, you'll see the following folders and files:
+## Writing posts via the CMS
 
-```text
-├── public/
-├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
-```
+`/admin` runs [Decap CMS](https://decapcms.org) against the `github` backend
+configured in `public/admin/config.yml`. See that file's header comment for
+the one-time OAuth setup steps (GitHub OAuth App + a Netlify site to proxy
+the auth handshake, since this site itself is static).
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+For local editing without GitHub auth, run `npx decap-server` in a second
+terminal and uncomment `local_backend: true` in `public/admin/config.yml`.
