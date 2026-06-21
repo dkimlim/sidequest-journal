@@ -11,7 +11,7 @@ backend:
   name: github
   repo: dkimlim/sidequest-journal # owner/repo — update if this changes
   branch: main
-  base_url: https://sidequest-journal.netlify.app/
+  base_url: https://sidequest-journal.netlify.app
   auth_endpoint: api/auth
 
 # For local editing without GitHub auth: run `npx decap-server` in another
