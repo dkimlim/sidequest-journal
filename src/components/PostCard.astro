@@ -1,0 +1,50 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import FormattedDate from './FormattedDate.astro';
+
+interface Props {
+	post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { title, pubDate, postType, tags, heroImage, caption } = post.data;
+const hasImage = Boolean(heroImage);
+const permalink = `/blog/${post.id}/`;
+---
+
+<article class={`post ${hasImage ? 'type-image' : 'type-text'}`}>
+	{
+		hasImage && (
+			<div class="post-image">
+				<a href={permalink}>
+					<Image src={heroImage} width={800} height={420} alt={title ?? ''} />
+				</a>
+			</div>
+		)
+	}
+	<div class="post-meta">
+		<span class="post-date"><FormattedDate date={pubDate} /></span>
+		<span class="post-type-badge">{postType}</span>
+	</div>
+	{
+		title && (
+			<h2 class="post-title">
+				<a href={permalink}>{title}</a>
+			</h2>
+		)
+	}
+	<div class="post-body">
+		<slot />
+	</div>
+	{caption && <p class="post-caption">{caption}</p>}
+	{
+		tags.length > 0 && (
+			<div class="post-tags">
+				{tags.map((tag) => (
+					<span class="tag">{tag}</span>
+				))}
+			</div>
+		)
+	}
+</article>

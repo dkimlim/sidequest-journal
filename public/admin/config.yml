@@ -1,0 +1,79 @@
+# Decap CMS config for Sidequest Journal.
+#
+# Manual setup still needed before this works (see chat summary for the full
+# walkthrough):
+#   1. Create the GitHub repo and push this project to it.
+#   2. Create a GitHub OAuth App and a free Netlify site to proxy the OAuth
+#      handshake (Decap CMS's documented path for non-Netlify hosting).
+#   3. Replace base_url below with that Netlify site's URL.
+
+backend:
+  name: github
+  repo: dkimlim/sidequest-journal # owner/repo — update if this changes
+  branch: master
+  base_url: https://sidequest-journal.netlify.app/
+  auth_endpoint: api/auth
+
+# For local editing without GitHub auth: run `npx decap-server` in another
+# terminal, then uncomment the line below.
+# local_backend: true
+
+publish_mode: simple
+
+# Astro's content-collection `image()` schema helper needs a Vite-resolvable
+# relative import path in frontmatter (e.g. ../../assets/uploads/foo.jpg),
+# not a public URL. A relative public_folder makes Decap write paths in
+# exactly that form.
+media_folder: src/assets/uploads
+public_folder: ../../assets/uploads
+
+collections:
+  - name: blog
+    label: Journal Posts
+    folder: src/content/blog
+    create: true
+    extension: md
+    format: frontmatter
+    identifier_field: description
+    slug: '{{slug}}'
+    summary: '{{postType}} — {{title}}'
+    fields:
+      - label: Title
+        name: title
+        widget: string
+        required: false
+        hint: "Leave blank for photo or thought posts that don't need a headline."
+      - label: Description
+        name: description
+        widget: text
+        hint: 'Short summary — used for SEO, RSS, and as the archive-list title when there is no Title.'
+      - label: Publish Date
+        name: pubDate
+        widget: datetime
+        format: 'YYYY-MM-DD'
+      - label: Updated Date
+        name: updatedDate
+        widget: datetime
+        format: 'YYYY-MM-DD'
+        required: false
+      - label: Type
+        name: postType
+        widget: select
+        options: ['essay', 'photo', 'thought', 'reading', 'note']
+        default: 'note'
+      - label: Hero Image
+        name: heroImage
+        widget: image
+        required: false
+      - label: Image Caption
+        name: caption
+        widget: string
+        required: false
+      - label: Tags
+        name: tags
+        widget: list
+        required: false
+        default: []
+      - label: Body
+        name: body
+        widget: markdown
