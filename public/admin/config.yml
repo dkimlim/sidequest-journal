@@ -21,7 +21,7 @@ backend:
 # terminal, then uncomment the line below.
 # local_backend: true
 
-publish_mode: simple
+publish_mode: editorial_workflow
 
 # Astro's content-collection `image()` schema helper needs a Vite-resolvable
 # relative import path in frontmatter (e.g. ../../assets/uploads/foo.jpg),
