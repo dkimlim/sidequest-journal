@@ -23,7 +23,7 @@ const { title, description, image = FallbackImage } = Astro.props;
 <script is:inline>
 	(function () {
 		const stored = localStorage.getItem('theme');
-		const theme = stored || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+		const theme = stored || 'light';
 		document.documentElement.dataset.theme = theme;
 	})();
 </script>
