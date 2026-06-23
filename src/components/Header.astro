@@ -5,6 +5,9 @@ import HeaderLink from './HeaderLink.astro';
 ---
 
 <header class="site-header">
+	<button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">
+		<span class="theme-toggle-icon" aria-hidden="true"></span>
+	</button>
 	<h1 class="site-title"><a href={withBase('/')}>{SITE_TITLE}</a></h1>
 	<p class="site-subtitle">{SITE_DESCRIPTION}</p>
 	<nav class="site-nav">
@@ -13,3 +16,11 @@ import HeaderLink from './HeaderLink.astro';
 		<HeaderLink href={withBase('/about')}>About</HeaderLink>
 	</nav>
 </header>
+
+<script is:inline>
+	document.getElementById('theme-toggle').addEventListener('click', () => {
+		const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+		document.documentElement.dataset.theme = next;
+		localStorage.setItem('theme', next);
+	});
+</script>
