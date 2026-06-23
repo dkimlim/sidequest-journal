@@ -161,8 +161,7 @@ hr {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-size: 1.1rem;
-	line-height: 1;
+	color: var(--tag-text);
 	background: var(--tag-bg);
 	border: 1px solid var(--border);
 	border-radius: 50%;
@@ -174,12 +173,22 @@ hr {
 	background: var(--border);
 }
 
-.theme-toggle-icon::before {
-	content: '🌙';
+.theme-icon {
+	width: 20px;
+	height: 20px;
+	fill: currentColor;
 }
 
-:root[data-theme='dark'] .theme-toggle-icon::before {
-	content: '☀️';
+.theme-icon-light {
+	display: none;
+}
+
+:root[data-theme='dark'] .theme-icon-dark {
+	display: none;
+}
+
+:root[data-theme='dark'] .theme-icon-light {
+	display: block;
 }
 
 .site-title {
