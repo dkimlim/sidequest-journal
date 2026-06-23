@@ -20,15 +20,15 @@
 }
 
 :root[data-theme='dark'] {
-	--bg: #18181b;
-	--surface: #222226;
-	--border: #34343a;
-	--text: #ECECEA;
-	--body-text: #cac8c2;
+	--bg: #111111;
+	--surface: #000000;
+	--border: #353535;
+	--text: #FFFFFF;
+	--body-text: #FFFFFF;
 	--muted: #97958f;
 	--accent: #d8d6d0;
-	--tag-bg: #2c2c30;
-	--tag-text: #c2c0ba;
+	--tag-bg: #484848;
+	--tag-text: #d1d1d1;
 	--link: #7fb0e8;
 	--box-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
 }
