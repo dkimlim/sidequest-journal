@@ -211,8 +211,6 @@ hr {
 .post.type-image .post-image img {
 	width: 100%;
 	display: block;
-	max-height: 420px;
-	object-fit: cover;
 	border-radius: 0;
 }
 
