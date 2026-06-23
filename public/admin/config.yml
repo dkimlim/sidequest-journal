@@ -80,3 +80,57 @@ collections:
       - label: Body
         name: body
         widget: markdown
+
+  # Decap collections support one `extension` per collection, but this repo's
+  # content.config.ts loader matches both .md and .mdx in src/content/blog.
+  # This second collection covers the .mdx posts the one above can't see —
+  # same folder, same fields, filtered to the other extension.
+  - name: blog_mdx
+    label: Journal Posts (MDX)
+    folder: src/content/blog
+    create: true
+    extension: mdx
+    format: frontmatter
+    identifier_field: description
+    slug: '{{slug}}'
+    summary: '{{postType}} — {{title}}'
+    fields:
+      - label: Title
+        name: title
+        widget: string
+        required: false
+        hint: "Leave blank for photo or thought posts that don't need a headline."
+      - label: Description
+        name: description
+        widget: text
+        hint: 'Short summary — used for SEO, RSS, and as the archive-list title when there is no Title.'
+      - label: Publish Date
+        name: pubDate
+        widget: datetime
+        format: 'YYYY-MM-DD'
+      - label: Updated Date
+        name: updatedDate
+        widget: datetime
+        format: 'YYYY-MM-DD'
+        required: false
+      - label: Type
+        name: postType
+        widget: select
+        options: ['essay', 'photo', 'thought', 'reading', 'note']
+        default: 'note'
+      - label: Hero Image
+        name: heroImage
+        widget: image
+        required: false
+      - label: Image Caption
+        name: caption
+        widget: string
+        required: false
+      - label: Tags
+        name: tags
+        widget: list
+        required: false
+        default: []
+      - label: Body
+        name: body
+        widget: markdown
