@@ -13,8 +13,8 @@
 	--tag-text: #5a5a54;
 	--link: #2c6fad;
 	--max-w: 640px;
-	--font-serif: 'Georgia', 'Times New Roman', serif;
-	--font-sans: var(--font-atkinson), system-ui, -apple-system, sans-serif;
+	--font-serif: var(--bitcount), serif;
+	--font-sans: var(--outfit), system-ui, -apple-system, sans-serif;
 	--box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
