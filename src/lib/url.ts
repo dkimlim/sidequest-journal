@@ -4,3 +4,11 @@
 export function withBase(path: string): string {
 	return import.meta.env.BASE_URL.replace(/\/$/, '') + path;
 }
+
+export function slugifyTag(tag: string): string {
+	return tag.toLowerCase().trim().replace(/\s+/g, '-');
+}
+
+export function tagUrl(tag: string): string {
+	return withBase(`/tags/${slugifyTag(tag)}/`);
+}

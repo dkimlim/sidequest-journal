@@ -5,6 +5,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
+import { tagUrl } from '../lib/url';
 
 type Props = CollectionEntry<'blog'>['data'];
 
@@ -56,7 +57,9 @@ const {
 					tags.length > 0 && (
 						<div class="post-tags">
 							{tags.map((tag) => (
-								<span class="tag">{tag}</span>
+								<a class="tag" href={tagUrl(tag)}>
+									{tag}
+								</a>
 							))}
 						</div>
 					)
